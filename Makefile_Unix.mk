@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         ::::::::             #
-#    Makefile_Unix.mk                                   :+:    :+:             #
-#                                                      +:+                     #
-#    By: W2Wizard <w2.wizzard@gmail.com>              +#+                      #
-#                                                    +#+                       #
-#    Created: 2022/02/26 21:36:38 by W2Wizard      #+#    #+#                  #
-#    Updated: 2022/07/05 14:53:23 by jobvan-d      ########   odam.nl          #
+#                                                         :::      ::::::::    #
+#    Makefile_Unix.mk                                   :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mahadad <mahadad@student.s19.be>           +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/02/26 21:36:38 by W2Wizard          #+#    #+#              #
+#    Updated: 2022/12/01 15:26:51 by mahadad          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ RESET	:= \033[0m
 
 #//= Make Rules =//#
 $(NAME): $(OBJS)
+	@if [ $(DEBUG) = 2 ]; then printf "$(RED)/!\ DEBUG ENABLE /!\ $(RESET)\nFlag used:\n"; printf "    %s\n" $(CFLAGS);fi
 	@ar rc $@ $^
 	@echo "$(GREEN)$(BOLD)Done$(RESET)"
 

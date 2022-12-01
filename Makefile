@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         ::::::::             #
-#    Makefile                                           :+:    :+:             #
-#                                                      +:+                     #
-#    By: W2Wizard <w2.wizzard@gmail.com>              +#+                      #
-#                                                    +#+                       #
-#    Created: 2022/02/26 21:32:49 by W2Wizard      #+#    #+#                  #
-#    Updated: 2022/08/10 12:42:39 by lde-la-h      ########   odam.nl          #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mahadad <mahadad@student.s19.be>           +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/02/26 21:32:49 by W2Wizard          #+#    #+#              #
+#    Updated: 2022/12/01 15:28:12 by mahadad          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,20 @@ override HEADERS += -I $(INCLUDE_DIR)
 
 CFLAGS :=	-Wextra -Wall -Werror -Wunreachable-code -Wno-char-subscripts -Wno-sign-compare \
 			-DLODEPNG_NO_COMPILE_ANCILLARY_CHUNKS -DLODEPNG_NO_COMPILE_ENCODER
+
+ifdef SANI
+	CFLAGS += -fsanitize=address
+	ifndef DEBUG
+		DEBUG := 2
+	endif
+endif
+
 ifdef DEBUG
-	CFLAGS += -g
+	CFLAGS += -g3
 else
 	CFLAGS	+= -Ofast -D NDEBUG
 endif
+
 
 # Recursive wildcard/find function, the subst is to guarantee unix file paths
 rwildcard = $(subst \,/,$(sort $(foreach d,$(wildcard $1/*),$(call rwildcard,$d,$2) $(wildcard $1/$2))))
