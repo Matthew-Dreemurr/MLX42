@@ -6,7 +6,7 @@
 #    By: mahadad <mahadad@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/26 21:32:49 by W2Wizard          #+#    #+#              #
-#    Updated: 2022/12/01 15:28:12 by mahadad          ###   ########.fr        #
+#    Updated: 2022/12/01 15:33:41 by mahadad          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ ifdef DEBUG
 	CFLAGS += -g3
 else
 	CFLAGS	+= -Ofast -D NDEBUG
+	DEBUG	:= 0
 endif
 
 
